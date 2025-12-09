@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    
+</head>
+<body>
+    <p>XMLHttpRequest (XHR) objects are used to interact with servers.
+         You can retrieve data from a URL without having to do a full page refresh.
+         This enables a Web page to update just part of a page without disrupting what the user is doing</p>
+    <p>Asynchronous JavaScript and XML, while not a technology in itself, is a term coined in 2005 by Jesse James Garrett, that describes a "new" approach to using a number of existing technologies together, including HTML or XHTML, CSS, JavaScript, DOM, XML, XSLT, and most importantly the XMLHttpRequest object. When these technologies are combined in the Ajax model, web applications are able to make quick, incremental updates to the user interface without reloading the entire browser page. This makes the application faster and more responsive to user actions.</p>
+        <div id="container">    </div>
+
+        <script>
+            const container=document.querySelector('#container');
+            const request= new XMLHttpRequest();//using XML instance and putting in variable request
+            request.open('GET','https://restcountries.eu/rest/v2/name/nepal');//get to recieve data
+            request.send();//sending request to recieve data
+            // to get the response
+            request.addEventListener('load',function(){
+                //console.log(this.responseText);
+                const [data]=JSON.parse(this.responseText);//converts the JSON file to array destructuring
+                console.log(data);
+                console.log(data.capital );
+            })
+        </script>
+</body>
+</html>

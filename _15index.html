@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>event propogation</title>
+        <style>
+            .parent{
+                padding: 20px;
+                margin: 20px;
+                background-color: red;
+                color: white;
+            }
+            .child{
+                padding: 10px;
+                margin: 10px;
+                background-color: black;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent">i am a parent
+            <div class="child">i am a child</div>
+        </div>
+
+        <script>
+            const parent1= document.getElementById('parent');
+            const child1= document.getElementById('child');
+            const parentCall=()=>{
+                window.alert('parent')
+            }
+            const childCall=()=>{ 
+                alert('child');
+                event.stopPropagation();//this will return only the one clicked
+            }
+
+            parent1.addEventListener('click',parentCall,true)//if false by default bubbling if true capturing
+            child1.addEventListener('click',childCall,true)
+            </script>
+    </body>
+</html>

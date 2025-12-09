@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            events input
+        </title>
+    </head>
+    <body>
+
+        
+        <div class="main-div">
+            <div>
+                <label for="">your name</label>
+                <input type="text" id="name">
+                <br>
+                <label for="">chose your faav icecreme
+                    <select name="iceCreme" id="iceCreme" >
+                    <option value="">select one</option>
+                    <option value="vanila">vanila</option>
+                    <option value="chocolate">chocolate</option>
+                    <option value="butterscotch">butterscotch</option>
+                    </select>
+                </label>
+                <br>
+                <div id="result">xyz</div>
+
+            </div>
+        </div>
+        <script>
+            // const selectElement=()=>{
+            //     const name = document.getElementById('name').value;
+            //     const iceCreme = document.getElementById('iceCreme').value//whi;e fetching from input tag we use .value ;
+            //     console.log(name+iceCreme);            
+            // }
+            const iceCreme = document.getElementById('iceCreme')//while assigning the id to variable we do not use value
+            iceCreme.addEventListener('change',()=>{
+            const name = document.getElementById('name').value;
+            const iceCreme=document.getElementById('iceCreme').value;
+            document.getElementById('result').innerHTML=iceCreme+name;
+            })
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event types</title>
+    </head>
+    <body>
+        <div class="alert">
+            <a href="#" type="button" classs="btn primary" onclick="alert('I am Awesome but nobody useses me')">alert</a>
+        </div>
+        <div class="functioncall">
+            <a href="#" type="button" class="btn primary" onclick="callingFunction()">by calling a Function</a>
+        </div>
+        <div class="thirdWay">
+            <a href="#" type="button" class="btn primary" id="thirdWay">inline event</a>
+        </div>
+        <div class="fourthWay">
+            <a href="#" class="btn primary" type="button" id="fourthWay">Event listner</a>
+        </div>
+
+        <button class="fivethWay">
+            event
+        </button>
+
+        <p class="MouseEvent" id="myP" onmouseup="mouseup()" onmousedown="mousedown()">My mouse events</p>
+
+        <div id="enterleave">
+            mouseevents
+        </div>
+
+        <p > keyboard objects</p>
+
+        <input type="text" class="keyboard" onkeypress="keyPress()" onkeydown="keyDown()" onkeyup="keyUp()">
+        <p  id="keys">gdhsf</p>
+        
+        
+        
+        <script>
+            //2nd way of writing events by calling function
+            const callingFunction = ()=>{
+                alert("most common way of writing")
+            }
+
+            //3rd way of writing the events by id
+            const thirdWay=document.getElementById('thirdWay');
+            thirdWay.onclick=function(){
+                alert("most common way of writing after calling function")
+            }
+
+            const fourthWay = document.querySelector('#fourthWay');
+
+            fourthWay.addEventListener('click',()=>{
+                alert("using EVENT LISTENER")
+            })
+            //event listner does not overide th multiple call by the user ir the code
+            //in third way if the onclick is 
+            //called 2 times it will overide the 1st call by the second onclick function or value
+        
+            const fivethWay= document.getElementById('fivethWay')
+            const checEvent =()=>{
+                console.log(event);//retuns all data related to event 
+                console.log(event.target);//returns the target tag
+                console.log(event.type);//returns the functionality type
+            }
+            fivethWay.addEventListener('click',checEvent);
+
+            console.log("mouse Events");
+            function mousedown(){
+                document.getElementById('myP').style.color="red"//stays green when the mouse is still being pressed
+            }
+            function mouseup(){
+                document.getElementById('myP').style.color ="green"//color stays red after the click
+            }
+
+            console.log("mouseobeject enter leave");
+            const enterLeave = document.getElementById('enterleave');
+            enterLeave.addEventListener('mouseenter',()=>{//when cursor is on the tag it changes color
+                enterLeave.style.backgroundColor="red";
+                console.log("mouseEnter");
+            })
+            enterLeave.addEventListener('mouseleave',()=>{
+                enterLeave.style.backgroundColor="green"//when cursor moves away from tag this function is triggered
+                console.log("mouseleave");
+            })
+
+
+            // console.log("keyboards");
+            // const keyPress =()=>{
+            //     document.getElementById('keys').innerHTML=
+            //     `you press ${event.key}and its code is ${event.code}`;
+            //     //event.key returns the key whih is pressed and(p(entered from keyboard))
+            //     //event.code returns the code of the key pressed(keyp)
+            //     //better to use 2nd and third once
+            // }
+            const keyDown = ()=>{
+                document.getElementById('keys').innerHTML=
+                `key is down`;
+                //when we click backslash to delete it will run
+            }
+            const keyUp =()=>{
+                document.getElementById('keys').innerHTML=
+                `key is up`;
+                //when we click backsalsh to delete then it will run
+            }
+        </script>
+    //doubt in mouse and keyboard
+        </body>
+
+</html>
+

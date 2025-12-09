@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>joke
+    </title>
+</head>
+<body>
+    <div class="container">
+        <h1>see new jokes evertime using api</h1>
+        <div id="joke" class="joke">Awesomw joke is loading</div>
+        <button class="btn" id="btn">next joke</button>
+    </div>
+    <script>
+        //'https://dad-jokes.p.rapidapi.com/random/joke'
+        const jokes = document.getElementById('joke');
+        const jokesBtn= document.getElementById('btn');
+        const newjoke=()=>{
+
+            const setHeader=()=>{
+                headers: {
+                    Accept :"application/json"
+                }
+            }
+
+            fetch('https://icanhazdadjoke.com',setHeader)
+            .then((res)=> res.json())
+            .then((data)=>{
+                jokes.innerHTML=data.joke;
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        }//using promises
+
+//         const newjoke=async()=>{
+
+// const setHeader=()=>{
+//     headers: {
+//         Accept :"application/json"
+//     }
+// }
+// try{
+// const res = await fetch('https://icanhazdadjoke.com',setHeader)
+// const data =await res.json() 
+// jokes.innerHTML=data.joke;
+// }catch(err){console.log(`the erroris ${err}`);}
+//         }
+        jokesBtn.addEventListener('click',newjoke);
+        newjoke();//when button is not clinked it views one joke
+    </script>
+</body>
+</html>
